@@ -38,14 +38,16 @@ void temperature_and_humidity_monitoring() {
   lcd.print("humidity monitor");
   int lasth = dht.readHumidity();
   int lastt = dht.readTemperature();
-  delay(1000);
+  delay(500);
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Temperature:");
   lcd.print(lastt);
+  lcd.print(" C");
   lcd.setCursor(0, 1);
   lcd.print("humidity:");
   lcd.print(lasth);
+  lcd.print(" %");
 
   while (1) {
     int h = dht.readHumidity();
@@ -55,9 +57,12 @@ void temperature_and_humidity_monitoring() {
       lcd.setCursor(0, 0);
       lcd.print("Temperature:");
       lcd.print(t);
+      lcd.print(" C");
       lcd.setCursor(0, 1);
       lcd.print("humidity:");
       lcd.print(h);
+      lcd.print(" %");
+
       lasth = h;
       lastt = t;
     }
